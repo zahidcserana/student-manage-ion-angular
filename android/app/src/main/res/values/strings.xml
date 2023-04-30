@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">my-first</string>
+    <string name="title_activity_main">my-first</string>
+    <string name="package_name">my.first</string>
+    <string name="custom_url_scheme">my.first</string>
+</resources>

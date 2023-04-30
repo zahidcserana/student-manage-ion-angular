@@ -12,6 +12,21 @@
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" [routerLink]="'/grade'" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="'archive-outline'" [md]="'archive-sharp'"></ion-icon>
+              <ion-label>Grade</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" [routerLink]="'/student'" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="'archive-outline'" [md]="'archive-sharp'"></ion-icon>
+              <ion-label>Student</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
         </ion-list>
 
         <ion-list id="labels-list">

@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-row>
+      <a [routerLink]="['/student/add']">
+        <span class="badge">Add new</span>
+      </a>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2">
+        Number
+      </ion-col>
+      <ion-col size="2">
+        Name
+      </ion-col>
+      <ion-col size="6" sizeMd="4" sizeLg="2">
+        Email
+      </ion-col>
+      <ion-col size="2" class="ion-hide-md-down">
+        Address
+      </ion-col>
+      <ion-col size="4" class="ion-hide-lg-down">
+        Created
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let row of students; let i = index">
+      <ion-col size="2">
+        <a [routerLink]="['/student', row.id]">
+          <span class="badge">{{ row.id }}</span>{{ row.number }}
+        </a>
+      </ion-col>
+      <ion-col size="2">
+        {{ row.name }}
+      </ion-col>
+      <ion-col size="6" sizeMd="4" sizeLg="2">
+        {{ row.email }}
+      </ion-col>
+      <ion-col size="2" class="ion-hide-md-down">
+        {{ row.address }}
+      </ion-col>
+      <ion-col size="4" class="ion-hide-lg-down">
+        {{ row.createdAt }}
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
