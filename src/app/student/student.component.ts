@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiResponse, Student, StudentData, StudentModel } from './student';
+import { ApiResponse, Student, StudentData, StudentModel, PageInfo } from './student';
 import { StudentService } from './student.service';
 import { debounceTime, distinctUntilChanged, tap, switchMap, map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -14,6 +14,8 @@ export class StudentComponent implements OnInit {
   title = 'Students';
   students: any[] = [];
   error: any;
+  resultsCount = 10;
+  pageInfo = new PageInfo();
 
   constructor(private studentService: StudentService) { }
 
@@ -22,9 +24,13 @@ export class StudentComponent implements OnInit {
   }
 
   getStudents() {
-    this.studentService.getStudents()
+    this.studentService.getStudents(this.pageInfo.currentPage, this.resultsCount)
     .subscribe({
       next: (response: ApiResponse) => {
+        this.students = []
+        this.pageInfo = response.meta.page
+        console.log(this.pageInfo)
+
         response.data.forEach((row: StudentData) => {
           let student = new StudentModel()
           student.id = row.id
@@ -37,11 +43,43 @@ export class StudentComponent implements OnInit {
 
           this.students.push(student)
         })
+      },
+      error: error => this.error = error, // error path
+    });
+  }
 
+  nextPage() {
+    if (this.pageInfo.currentPage == this.pageInfo.lastPage) {
+      return;
+    }
 
-        }, // success path
-        error: error => this.error = error, // error path
-      });
+    this.pageInfo.currentPage++;
+    this.getStudents();
+  }
+
+  prevPage() {
+    if (this.pageInfo.currentPage == 1) {
+      return;
+    }
+    this.pageInfo.currentPage--;
+    this.getStudents();
+  }
+
+  goFirst() {
+    if (this.pageInfo.currentPage == 1) {
+      return;
+    }
+    this.pageInfo.currentPage = 1;
+    this.getStudents();
+  }
+
+  goLast() {
+    if (this.pageInfo.currentPage == this.pageInfo.lastPage) {
+      return;
+    }
+
+    this.pageInfo.currentPage = this.pageInfo.lastPage;
+    this.getStudents();
   }
 
   // registerForm: FormGroup;

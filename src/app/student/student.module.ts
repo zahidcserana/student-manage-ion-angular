@@ -7,8 +7,7 @@ import { StudentComponent } from './student.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { IonicModule } from '@ionic/angular';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [StudentComponent, AddStudentComponent, EditStudentComponent],
@@ -17,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     IonicModule,
     StudentRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class StudentModule { }

@@ -40,3 +40,12 @@ export class StudentModel {
   address = ''
   createdAt = ''
 }
+
+export class PageInfo {
+  currentPage = 1
+  from = 1
+  lastPage = 1
+  perPage = 10
+  to = 10
+  total = 0
+}

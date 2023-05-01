@@ -13,7 +13,7 @@ import { ApiResponse, Student, StudentData } from './student';
 export class StudentService {
   private baseUrl ='http://task.local/api/';
 
-  studentsUrl = 'students?page[number]=1&page[size]=100';
+  studentsUrl = 'students?';
   studentPostUrl = 'students';
   studentGetUrl = 'students/';
   studentUpdateUrl = 'students/';
@@ -39,8 +39,8 @@ export class StudentService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  getStudents():Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.baseUrl + this.studentsUrl)
+  getStudents(page: any, size: any):Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.baseUrl + this.studentsUrl + `page[number]=${page}&page[size]=${size}`)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
