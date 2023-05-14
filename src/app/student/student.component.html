@@ -58,13 +58,16 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <app-pagination style="width: 100%" [totalSize]="pageInfo.total" [currentPage]="pageInfo.currentPage" [lastPage]="pageInfo.lastPage" (pageChange)="reloadTable($event)">
+    </app-pagination>
+
+    <!-- <ion-row>
       <ion-col size="12" class="ion-text-center">
         {{ pageInfo.currentPage }} of {{ pageInfo.lastPage }}
       </ion-col>
-    </ion-row>
+    </ion-row> -->
 
-    <ion-row>
+    <!-- <ion-row>
       <ion-col size="2">
         <ion-button fill="clear" (click)="goFirst()">
           <ion-icon name="play-back" slot="icon-only"></ion-icon>
@@ -95,6 +98,6 @@
           <ion-icon name="play-forward" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
   </div>
 </ion-content>

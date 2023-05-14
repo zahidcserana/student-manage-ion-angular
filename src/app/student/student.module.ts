@@ -8,6 +8,8 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PaginationModule } from 'src/app/common/modules/pagination/pagination.module';
 
 @NgModule({
   declarations: [StudentComponent, AddStudentComponent, EditStudentComponent],
@@ -17,7 +19,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     IonicModule,
     StudentRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ]
 })
 export class StudentModule { }

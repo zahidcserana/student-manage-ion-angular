@@ -48,39 +48,46 @@ export class StudentComponent implements OnInit {
     });
   }
 
-  nextPage() {
-    if (this.pageInfo.currentPage == this.pageInfo.lastPage) {
-      return;
-    }
-
-    this.pageInfo.currentPage++;
+  reloadTable(e: any) {
+    this.pageInfo.currentPage = e.page
+    this.resultsCount = e.limit
     this.getStudents();
   }
 
-  prevPage() {
-    if (this.pageInfo.currentPage == 1) {
-      return;
-    }
-    this.pageInfo.currentPage--;
-    this.getStudents();
-  }
 
-  goFirst() {
-    if (this.pageInfo.currentPage == 1) {
-      return;
-    }
-    this.pageInfo.currentPage = 1;
-    this.getStudents();
-  }
+  // nextPage() {
+  //   if (this.pageInfo.currentPage == this.pageInfo.lastPage) {
+  //     return;
+  //   }
 
-  goLast() {
-    if (this.pageInfo.currentPage == this.pageInfo.lastPage) {
-      return;
-    }
+  //   this.pageInfo.currentPage++;
+  //   this.getStudents();
+  // }
 
-    this.pageInfo.currentPage = this.pageInfo.lastPage;
-    this.getStudents();
-  }
+  // prevPage() {
+  //   if (this.pageInfo.currentPage == 1) {
+  //     return;
+  //   }
+  //   this.pageInfo.currentPage--;
+  //   this.getStudents();
+  // }
+
+  // goFirst() {
+  //   if (this.pageInfo.currentPage == 1) {
+  //     return;
+  //   }
+  //   this.pageInfo.currentPage = 1;
+  //   this.getStudents();
+  // }
+
+  // goLast() {
+  //   if (this.pageInfo.currentPage == this.pageInfo.lastPage) {
+  //     return;
+  //   }
+
+  //   this.pageInfo.currentPage = this.pageInfo.lastPage;
+  //   this.getStudents();
+  // }
 
   // registerForm: FormGroup;
   // this.registerForm = this.formBuilder.group({
